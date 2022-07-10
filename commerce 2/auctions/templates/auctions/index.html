@@ -1,0 +1,17 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Hello, {{request.user.username}}</h2><br>
+
+<h4>What do you want to do today</h4>
+
+<br><ul>
+    <a href="{% url 'listings' %}"><li> Go to Active Listings</li></a>
+    <a href="{% url 'create' %}"><li> Create Listings</li></a>
+    <a href="{% url 'login' %}"><li> Login to your account</li></a>
+    <a href="{% url 'register' %}"><li> Register an account</li></a>
+
+</ul>
+
+    
+{% endblock %}

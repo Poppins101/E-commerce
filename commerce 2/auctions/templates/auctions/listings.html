@@ -1,0 +1,36 @@
+{% extends "auctions/layout.html" %}
+{% load static%}
+
+{% block body %}
+
+
+    
+<h2>Welcome {{user.username}}</h2><br>
+<h4>Active Listings</h4><br>
+{% for product in products %}
+
+<div>
+    <div>
+        <a href="{% url 'bid' product.title %}">
+            <img src = "{{product.image.url}}" width="350"  >
+        </a>
+    </div>
+
+    <div>
+        <a href="{% url 'bid' product.title %}">
+        {{product.title}}
+        </a>
+    </div>
+
+    <div>
+       N{{product.price}}
+    </div>
+
+    <div>
+       Created {{product.date}}
+    </div>
+    
+</div><br>
+
+{% endfor %}
+{% endblock %}

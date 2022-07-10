@@ -1,0 +1,43 @@
+{% extends "auctions/layout.html" %}
+{% load static%}
+
+{% block body %}
+<h2>Welcome {{user.username}}</h2><br>
+<h4>Listing: {{product.title}}</h4>
+<div>
+    <div>
+            <img src = "{{product.image.url}}" width="350"  >
+    </div><br>
+    <div>
+        <h4>Details</h4>
+        <ul>
+                <li>price: N{{product.price}} </li>
+                <li> listed by : {{product.user}}</li>
+                <li> Date Listed : {{product.date}}</li>
+        </ul>
+    </div><br>
+    <div>
+        <h5>Descriptions</h5>
+        {{product.description}}
+    </div><br>
+</div>
+
+{{bids}} bid(s) so far, Your bid is the current bid </p>
+
+<div>
+    <form action=" {% url 'bid' product.title %}" method ="post">
+        {% csrf_token %}
+
+        <div class ='form-group'>
+            <input class="form-control" type="number" name="bid" placeholder="Bid">
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Place Bid">
+    </form>
+
+</div>
+
+
+
+
+{% endblock %}
